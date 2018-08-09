@@ -1,0 +1,55 @@
+.curve-text-labels{
+    font: 11px sans-serif;
+    text-anchor: middle;
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+}
+.legend-text-labels{
+    font: 10px sans-serif;
+    text-anchor: middle;
+}
+.node {
+    cursor: pointer;
+}
+
+.node--hover circle {
+    stroke: #000;
+    stroke-width: 1.2px;
+}
+
+.node--leaf {
+    fill: white;
+}
+  
+.label {
+    font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-anchor: middle;
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+}
+
+.label,
+.node--root,
+.node--leaf {
+    pointer-events: none;
+}
+
+path {
+    fill: none;
+}
+
+/* div#wrapper{
+    min-width: 1210px;
+}
+div#bubble{
+    width: 1000px;
+    height: 1000px;
+    border: 1px solid navajowhite;
+}
+div#bubble-chart-menu{
+    width: 200px;
+    height: 1000px;
+    display: inline-block;
+    border: 1px solid orange;
+}
+div#bubble-dropdown-btn{
+    margin: 20px 0px 0px 15px;
+} */
