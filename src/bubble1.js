@@ -4,21 +4,37 @@ import * as d3 from 'd3';
 let width, height, margin;
 let svg, color;
 
-export function renderBubble1(data, container){
+export function renderBubble1(data, container, colorset){
     //console.log(data.data);
     container.selectAll('*').remove();
+
+    if(colorset === 'RdBu'){
+        color = d3.scaleSequential(d3.interpolateRdBu);
+    }else if(colorset === 'BrBG'){
+        color = d3.scaleSequential(d3.interpolateBrBG);
+    }else if(colorset === 'PuOr'){
+        color = d3.scaleSequential(d3.interpolatePuOr);
+    }else if(colorset === 'BuGn'){
+        color = d3.scaleSequential(d3.interpolateBuGn);
+    }else if(colorset === 'Rainbow'){
+        color = d3.scaleSequential(d3.interpolateRainbow);
+    }else if(colorset === 'Magma'){
+        color = d3.scaleSequential(d3.interpolateMagma);
+    }else if(colorset === 'Spectral'){
+        color = d3.scaleSequential(d3.interpolateSpectral);
+    }
+
     generateCirclePack(data.data, container);
 }
 
 function generateCirclePack(data, container){
+    
     data.forEach(function(d){
         d.value = +d.value;
     });
 
     width = 960, height = 960;
     margin = 110; //needed if zoomable
-
-    color = d3.scaleSequential(d3.interpolateRdBu);
 
     svg = container.append("svg")
         .attr("width", width)
@@ -69,7 +85,7 @@ function generateCirclePack(data, container){
         .attr('r', function(d){return d.r; })
         .attr('fill', function(d){
             //console.log(color);
-            return color(d.height); 
+            return color(d.depth); 
         });
 
     // append path that is based on circle parameters to each node
@@ -224,7 +240,7 @@ function generateCirclePackLegend(svg,  width, margin, node_depth, node_height, 
             let vert = i * height - offset;
             return 'translate(' + horz + "," + vert + ")";
         });
-
+    
     legend.append('rect')
         .attr('width', legendRectSize)
         .attr("height", legendRectSize)
